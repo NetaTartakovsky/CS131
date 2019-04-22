@@ -1,0 +1,3 @@
+Assignment:
+
+Write and test a simple method everyNth that accepts a list L and a positive integer N and returns a list containing every Nth element of L, starting with the (N−1)st element, then the (2N−1)st element, and so on until L's elements are exhausted so that the returned list's size is ⌊L.size / N⌋ (where ⌊x⌋ is the floor of x). The method should accept a list of any type, should return a list of the same type, and should consume O(N) time and space. The returned value should be immutable; any later changes to the input list should not affect the output list.
