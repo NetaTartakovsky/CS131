@@ -1,0 +1,14 @@
+Towers is an arithmetical-logical puzzle whose goal is to fill in an N×N grid with integers, so that every row and every column contains all the integers from 1 through N, and so that certain extra constraints can be met. These extra constraints are specified by counts of which towers are visible from an edge of the grid, assuming that each grid entry is occupied by a tower whose height is given by the grid entry. There are 4N counts since the grid has four edges. For example, if N is 5 and the counts for the top, bottom, left, and right edges are [2,3,2,1,4], [3,1,3,3,2], [4,1,2,5,2], and [2,4,2,1,2] respectively, then there is one solution with rows [2,3,4,5,1], [5,4,1,3,2], [4,1,5,2,3], [1,2,3,4,5], [3,5,2,1,4] respectively, as shown in the corresponding puzzle in Simon Tatham's implementation of the Towers puzzle.
+
+Assignment:
+
+First, write a predicate tower/3 that accepts the following arguments:
+
+N, a nonnegative integer specifying the size of the square grid.
+T, a list of N lists, each representing a row of the square grid. Each row is represented by a list of N distinct integers from 1 through N. The corresponding columns also contain all the integers from 1 through N.
+C, a structure with function symbol counts and arity 4. Its arguments are all lists of N integers, and represent the tower counts for the top, bottom, left, and right edges, respectively.
+Precondition. No solution will involve an integer that exceeds the vector_max of the GNU Prolog finite domain solver. Also, all arguments must be finite terms of the proper types. Your code need not check these preconditions; it can assume that the preconditions hold. Arguments can contain logical variables, except that the first argument N must be bound to a nonnegative integer.
+
+Second, write a predicate plain_tower/3 that acts like tower/3 but does not use the GNU Prolog finite domain solver. Instead, plain_tower/3 should enumerate the possible integer solutions using standard Prolog primitives such as member/2 and is/2. Although plain_tower/3 should be simpler than tower/3 and should not be restricted to integers less than vector_max, the tradeoff is that it may have worse performance. Illustrate the performance difference on a test case of your own design, measuring performance with statistics/0 or statistics/2. Package up your test case in a predicate speedup/1, which runs both tower/3 and plain_tower/3 and unifies its argument to the floating-point ratio of the latter's total CPU time to the former (hopefully this figure will be greater than 1).
+
+Third, consider the problem of ambiguous Towers puzzle. Write a Prolog predicate ambiguous(N, C, T1, T2) that uses tower/3 to find a single N×N Towers puzzle with edges C and two distinct solutions T1 and T2.
