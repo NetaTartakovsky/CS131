@@ -62,6 +62,7 @@ tower(N, T, counts(Top,Bottom,Left,Right)) :-
 
 % ------------------------
 % plain tower implementation
+% acts like tower implementation (above), but does not use GNU Prolog finite domain solver
 
 p_domain(0,[]) :- !.
 p_domain(N,[N|H]) :-
@@ -99,6 +100,7 @@ plain_tower(N, T, counts(Top,Bottom,Left,Right)) :-
 
 % ------------------------
 % speedup implementation
+% test case which illustrates performance difference between tower and plain tower implementations
 
 run_tower(Time) :-
 statistics(cpu_time,_),
@@ -119,6 +121,7 @@ Ratio is P/T.
 
 % ------------------------
 % ambiguous implementation
+% uses tower implementation to find a single puzzle with two distinct solutions
 
 ambiguous(N,C,T1,T2) :-
 tower(N,T1,C),
